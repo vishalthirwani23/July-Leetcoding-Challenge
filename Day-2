@@ -1,0 +1,27 @@
+https://leetcode.com/explore/challenge/card/july-leetcoding-challenge/544/week-1-july-1st-july-7th/3378/
+Code:
+
+class Solution {
+   
+public:
+     
+    int height(TreeNode* root){
+        if(root==NULL) return 0;
+        return 1+max(height(root->left),height(root->right));
+    }
+    void helper(TreeNode* root,vector<vector<int>>& ans,int level){
+        if(root==NULL) return ;
+        ans[level-1].push_back(root->val);
+        helper(root->left,ans,level-1);
+        helper(root->right,ans,level-1);
+        
+    }
+    vector<vector<int>> levelOrderBottom(TreeNode* root) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        int h=height(root);
+        vector<vector<int>> ans(h);
+        helper(root,ans,h);
+        return ans;
+    }
+};
