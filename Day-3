@@ -1,0 +1,52 @@
+https://leetcode.com/explore/challenge/card/july-leetcoding-challenge/544/week-1-july-1st-july-7th/3379/
+Code:
+
+class Solution {  
+public:
+    int next_state(vector<int>& cells){
+        int pre=cells[0],res=0;
+        for(int i=0;i<=7;i++){
+            int temp=cells[i];
+            cells[i]=(i!=0&& i!=7 && pre==cells[i+1])?1:0;
+            if(cells[i])
+                res+=(1<<i);
+            pre=temp;
+        }
+        return res;
+    }
+    vector<int> prisonAfterNDays(vector<int>& cells, int N) {
+        bool hascycle=false;
+        int cycle;
+        unordered_map<int,int> m;
+        int x=0;
+        for(int i=0;i<8;i++)
+            if(cells[i])
+                x+=(1<<i);
+        m[x]=0;
+        int j=-1;
+        while(N--){
+          j++;
+            int p=next_state(cells);
+            if(m.find(p)!=m.end()){
+               
+                hascycle=true;
+                cycle=j+1-m[p];
+                N%=cycle;
+                break;
+            }
+            else{
+                m[p]=j+1; 
+            }
+        }
+        if(hascycle){
+            for(int i=0;i<N;i++)
+               int p= next_state(cells);
+        }
+        
+        return cells;
+    }
+};
+
+
+
+
