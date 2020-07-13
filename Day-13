@@ -1,0 +1,48 @@
+https://leetcode.com/explore/challenge/card/july-leetcoding-challenge/545/week-2-july-8th-july-14th/3389/
+Code:
+
+Iterative Approach:
+class Solution {
+public:
+    bool check(TreeNode* p, TreeNode* q){
+        if(p==NULL && q==NULL) return true;
+        if(p==NULL || q==NULL) return false;
+        return p->val==q->val;
+    }
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(p==NULL && q==NULL) return true;
+        if(!check(p,q)) return false;
+        queue<TreeNode*> qp,qq;
+        
+        qp.push(p);
+        qq.push(q);
+        while(!qp.empty()){
+                p=qp.front(),q=qq.front();
+                qp.pop(),qq.pop();
+                
+                if(!check(p->left,q->left)) return false;
+                if(p->left){
+                    qp.push(p->left);
+                    qq.push(q->left);
+                }
+                
+                if(!check(p->right,q->right)) return false;
+                if(p->right){
+                    qp.push(p->right);
+                    qq.push(q->right);
+                }
+                
+        }
+        return true;
+    }
+};
+
+Recursive Approach:
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(p==NULL && q==NULL) return true;
+        if(p==NULL || q==NULL) return false;
+        return (p->val==q->val) && isSameTree(p->left,q->left) && isSameTree(p->right,q->right);
+    }
+};
