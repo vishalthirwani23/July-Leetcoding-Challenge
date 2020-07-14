@@ -1,0 +1,11 @@
+https://leetcode.com/explore/challenge/card/july-leetcoding-challenge/545/week-2-july-8th-july-14th/3390/
+Code:
+
+class Solution {
+public:
+    double angleClock(int hour, int minutes) {
+        double x=(hour!=12?hour*30+minutes*0.5:minutes*0.5);
+        double y=6*minutes;
+        return min(abs(x-y),360-abs(x-y));
+    }
+};
