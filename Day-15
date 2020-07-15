@@ -1,0 +1,24 @@
+https://leetcode.com/explore/challenge/card/july-leetcoding-challenge/546/week-3-july-15th-july-21st/3391/
+Code:
+
+class Solution {
+public:
+    string reverseWords(string s) {
+      ios_base::sync_with_stdio(false);
+      cin.tie(0);  
+      reverse(s.begin(),s.end());
+      int n=s.length(),j,index=0;
+        
+          for(int i=0;i<n;i++){
+             if(s[i]!=' '){
+                 
+                 if(index!=0) s[index++] = ' ';
+                 j=index;
+                 while(i<n && s[i]!=' ') s[index++]=s[i++];
+                 reverse(s.begin()+j,s.begin()+index);
+             }
+          }
+        s.erase(s.begin()+index,s.end());
+        return s;        
+    }
+};
