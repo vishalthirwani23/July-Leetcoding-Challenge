@@ -1,0 +1,29 @@
+https://leetcode.com/explore/challenge/card/july-leetcoding-challenge/546/week-3-july-15th-july-21st/3393/
+Code:
+
+Method 1:
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        map<int,int> m;
+        for(int num:nums){
+            m[num]++;
+        }
+        vector<pair<int,int>> v;
+      
+        for( auto i:m){
+            v.push_back({i.second,i.first});
+        }
+          sort(v.begin(),v.end(),greater<pair<int,int>>());
+        vector<int> ans;
+        for(int i=0;i<k;i++){
+            ans.push_back(v[i].second);
+            
+        }
+        return ans;
+    }
+};
+
+Other Methods:
