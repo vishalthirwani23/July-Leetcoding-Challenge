@@ -1,0 +1,19 @@
+https://leetcode.com/explore/challenge/card/july-leetcoding-challenge/546/week-3-july-15th-july-21st/3396/
+Code:
+
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        if(head==NULL) return NULL;
+        ListNode *ans=head,*temp;
+        while(ans && ans->val==val) ans=ans->next;
+        if(ans==NULL) return ans;
+        temp=ans;
+        while(temp){
+            while(temp->next && temp->next->val==val)
+                temp->next=temp->next->next;
+            temp=temp->next;
+        }
+        return ans;
+    }
+};
