@@ -1,0 +1,20 @@
+https://leetcode.com/explore/featured/card/july-leetcoding-challenge/547/week-4-july-22nd-july-28th/3399/
+Code:
+
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        int x=0;
+        for(int num:nums)
+            x^=num;
+        x&=(-x);
+        vector<int> ans(2,0);
+        for(int num:nums){
+            if(x&num)
+                ans[0]^=num;
+            else
+                ans[1]^=num;
+        }
+        return ans;
+    }
+};
