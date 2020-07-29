@@ -1,6 +1,7 @@
 https://leetcode.com/explore/challenge/card/july-leetcoding-challenge/548/week-5-july-29th-july-31st/3405/
 Code:
 
+Time Complexity O(n) | Space Complexity O(n) 
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -19,3 +20,5 @@ public:
         return not_own[n-1];
     }
 };
+
+Time Complexity O(n) | Space Complexity O(1)
